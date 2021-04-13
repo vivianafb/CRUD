@@ -22,7 +22,6 @@ class CarritoController extends Controller
 
     public function agregar(Request $request,$id,$user,$precio){
         
-       dd(auth()->user->id);
     //    $carrito = new Carrito();
     //    $carrito->carrito_id= $request->id;
     //    $carrito->users_id = $user;

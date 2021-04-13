@@ -51,6 +51,13 @@
                             {{ csrf_field() }}                      
                                 <input class="btn Boton2 btn-block" type="submit" value="Agregar">
                             </form>
+                        @else
+                            
+                        <form action="{{ route('login') }}" method="get" enctype="multipart/form-data" >   
+                                              
+                            <input class="btn Boton2 btn-block" type="submit" value="Agregar">
+                        </form>
+                            
                         @endif
                         
                             
