@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrito;
 use App\Models\Serie;
-
+use App\Models\Detalle_Carrito;
 use Illuminate\Http\Request;
 
 class CarritoController extends Controller
@@ -20,11 +20,20 @@ class CarritoController extends Controller
         return view('carrito.index');
     }
 
-    public function agregar($array){
+    public function agregar(Request $request,$id,$user,$precio){
         
-        error_log(serialize($array));
-        //error_log($array["user"]);
-        //print_r($array['user']);
+       dd(auth()->user->id);
+    //    $carrito = new Carrito();
+    //    $carrito->carrito_id= $request->id;
+    //    $carrito->users_id = $user;
+    //    $carrito->total = $precio;
+    //    $carrito->estado= $request->estado;
+
+    //    $detalle_carrito = new Detalle_Carrito();
+       
+    //    $detalle_carrito->series_id = $id;
+    //    $detalle_carrito->precio = $precio;
+    //    $detalle_carrito->cantidad=$request->cantidad;
         return redirect('/')->with('mensaje','Se agrego al carrito correctamente');
         
     }

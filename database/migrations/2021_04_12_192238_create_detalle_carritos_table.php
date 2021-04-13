@@ -19,9 +19,8 @@ class CreateDetalleCarritosTable extends Migration
             $table->foreign('carritos_id')->references('id')->on('carritos');
             $table->unsignedBigInteger('series_id');
             $table->foreign('series_id')->references('id')->on('series');
-            $table->string('precio');
-            $table->integer('cantidad');
-            $table->integer('estado');
+            $table->integer('precio');
+            $table->integer('cantidad')->default(1);
             $table->timestamps();
         });
     }

@@ -63,14 +63,12 @@ class SerieController extends Controller
     public function store(Request $request)
     {
         //
-
         // $validacion=[
         //     'Nombre'=>'required|string|max:100',
         //     'Categoria'=>'required|string|max: 100',
         // ];
         // $mensaje=[
-        //     'required'=>'El :attribute es requerido',
-            
+        //     'required'=>'El :attribute es requerido',  
         // ];
 
         $series = new Serie();

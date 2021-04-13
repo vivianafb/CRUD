@@ -45,11 +45,14 @@
                         <p class="serie__precio"> {{ $serie->precio }}</p>
                         
                         
-                        <form action="{{ route('carrito.agregar',['id'=>$series->id,'user'=>strval(Auth::user()->id)]) }}" method="post" enctype="multipart/form-data" >   
-                            {{ method_field('PUT') }}
-						{{ csrf_field() }}                      
-                            <input class="btn Boton2 btn-block" type="submit" value="Agregar">
-                        </form>
+                        @if(Auth::check())
+                            <form action="{{ route('carrito.agregar', ["id"=>$serie->id, "user"=>Auth::user()->id,"precio"=>$serie->precio]) }}" method="post" enctype="multipart/form-data" >   
+                                {{ method_field('PUT') }}
+                            {{ csrf_field() }}                      
+                                <input class="btn Boton2 btn-block" type="submit" value="Agregar">
+                            </form>
+                        @endif
+                        
                             
                     </div>
                 </a>

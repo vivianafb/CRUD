@@ -17,7 +17,7 @@ class CreateCarritosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
-            $table->string('total');
+            $table->integer('total');
             $table->integer('estado')->default(1);
             $table->timestamps();
         });

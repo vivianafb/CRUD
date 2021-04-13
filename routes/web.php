@@ -42,7 +42,7 @@ Route::get('/home', [SerieController::class, 'inicio'])->name('home');
 
 Route::resource('/carrito', CarritoController::class)->middleware('auth');
 Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito');
-Route::put('/carrito/agregar/{array}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+Route::put('/carrito/agregar/{id}/{user}/{precio}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
 
 // Route::get('/carrito', [CarritoController::class, 'store'])->name('carrito.store');
  
