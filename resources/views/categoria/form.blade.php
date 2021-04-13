@@ -1,4 +1,4 @@
-    <h1> {{$modo}} categoria </h1>
+<h1> {{$modo}} categoria </h1>
 @if(count($errors)>0)
     <div class="alert alert-danger" role="alert">
         <ul>
@@ -17,6 +17,6 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" value="{{ $modo }} datos" class="btn btn-success">
-        <a href="{{ url('categoria/') }}" class="btn btn-info">Atrás</a>
+        <input type="submit" value="{{ $modo }} datos" class="btn btn-success" id="Boton1">
+        <a href="{{ url('categoria/') }}" class="btn btn-info" id="Boton2">Atrás</a>
     </div>

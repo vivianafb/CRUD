@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Serie;
 use App\Models\Categoria;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 class SerieController extends Controller
@@ -13,12 +14,30 @@ class SerieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function inicio(Request $request){
+        
+        $buscarpor=$request->get('buscarpor');
+        
+       // dd($buscarpor);
+
+        $categorias=Categoria::paginate(15);
+
+        $series=Serie::where('categorias_id','like','%'.$buscarpor.'%')
+        ->paginate(15);
+
+        return view('serie.inicio')
+        ->with('series',$series)
+        ->with('categorias',$categorias)
+        ->with('buscarpor',$buscarpor);
+    }
+
     public function index()
     {
        
         //
         $categorias['categorias']=Categoria::paginate(15);
         $series['series']=Serie::paginate(15);
+        
         return view('serie.index',$series,$categorias);
     }
 
@@ -45,28 +64,21 @@ class SerieController extends Controller
     {
         //
 
-        $validacion=[
-            'Nombre'=>'required|string|max:100',
-            'Categoria'=>'required|string|max: 100',
-            'Imagen'=>'required|max:10000|mimes:jpeg,png,jpg'
-        ];
+        // $validacion=[
+        //     'Nombre'=>'required|string|max:100',
+        //     'Categoria'=>'required|string|max: 100',
+        // ];
+        // $mensaje=[
+        //     'required'=>'El :attribute es requerido',
+            
+        // ];
 
-        $mensaje=[
-            'required'=>'El :attribute es requerido',
-            'Imagen.required' =>'Falta la imagen'
-        ];
-
-        $this->validate($request, $validacion,$mensaje);
-
-
-
-        $datosSerie = request()->except('_token');
-        
-        if($request->hasFile('Imagen')){
-            $datosSerie['Imagen'] = $request->file('Imagen')->store('uploads','public');
-        };
-
-        Serie::insert($datosSerie);
+        $series = new Serie();
+        $series->id = $request->id;
+        $series->nombre = $request->nombre;
+        $series->precio = $request->precio;
+        $series->categorias_id = $request->Categoria;
+        $series->save();
         //return response()->json($datosSerie);
         return redirect('serie')->with('mensaje','La serie ha sido agregada');
     }
@@ -91,10 +103,11 @@ class SerieController extends Controller
     public function edit($id)
     {
         
-        //
-        $categorias=Categoria::findOrFail($id);
+        $categorias=Categoria::all();
         $serie=Serie::find($id);
-        return view('serie.edit', $serie);
+        return view('serie.edit')
+        ->with('serie',$serie)
+        ->with('categorias',$categorias);
     }
 
     /**
@@ -106,36 +119,30 @@ class SerieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $validacion=[
-            'Nombre'=>'required|string|max:100',
-            'Categoria'=>'required|string|max: 100',
+        // //
+        // $validacion=[
+        //     'Nombre'=>'required|string|max:100',
+        //     'Categoria'=>'required|string|max: 100',
             
-        ];
+        // ];
 
-        $mensaje=[
-            'required'=>'El :attribute es requerido',
+        // $mensaje=[
+        //     'required'=>'El :attribute es requerido',
             
-        ];
-        if($request->hasFile('Imagen')){
-            $validacion=['Imagen'=>'required|max:10000|mimes:jpeg,png,jpg'];
-            $mensaje=['Imagen.required' =>'Falta la imagen'];
-        }
-
-        $this->validate($request, $validacion,$mensaje);
+        // ];
+        // if($request->hasFile('Imagen')){
+        //     $validacion=['Imagen'=>'required|max:10000|mimes:jpeg,png,jpg'];
+        //     $mensaje=['Imagen.required' =>'Falta la imagen'];
+        // }
         
-        $datosSerie = request()->except(['_token','_method']);
+        
 
-        if($request->hasFile('Imagen')){
-            $serie=Serie::findOrFail($id);
-            Storage::delete('public/'.$serie->Imagen);
-            $datosSerie['Imagen'] = $request->file('Imagen')->store('uploads','public');
-        };
+        $serie=Serie::find($id);
+        $serie->nombre = $request->nombre;
+        $serie->precio = $request->precio;
+        $serie->categorias_id = $request->Categoria;
+        $serie->update();
 
-
-        Serie::where('id','=',$id)->update($datosSerie);
-        $serie=Serie::findOrFail($id);
-        //return view('serie.edit',compact('serie'));
         return redirect('serie')->with('mensaje','Los datos han sido modificados');
 
     }
@@ -146,15 +153,30 @@ class SerieController extends Controller
      * @param  \App\Models\Serie  $serie
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Serie $serie)
     {
         //
-        $serie=Serie::findOrFail($id);
-        if(Storage::delete('public/'.$serie->imagen)){
-            Serie::destroy($id);
-        };
+        $serie->delete();
+        return redirect('serie'); 
+    }
 
-    
-        return redirect('serie')->with('mensaje','La serie ha sido eliminada');
+    public function imagen($id){
+        return view('serie.upload')
+        ->with('id',$id);
+    }
+
+    public function upload(Request $request, $id){
+        $this->validate($request, [
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ],[
+            'image.required' => 'Seleccione un archivo.',
+            'image.image' => 'Formato no valido.',
+            'image.mimes' => 'Formato no valido.',
+            'image.max' => 'Peso excede el maximo permitido (Max: 2Mb).'
+        ]);
+
+        $imageName = $id.'.jpg';
+        $request->image->move(('img/series'), $imageName);
+        return redirect('serie')->with('Imagen cargada');
     }
 }

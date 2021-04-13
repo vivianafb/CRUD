@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarritoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SerieController;
@@ -26,17 +27,25 @@ Route::get('/', function () {
 
 // Route::get('/serie/create',[SerieController::class,'create']);
 
-Route::resource('serie', SerieController::class)->middleware('auth');
 
+Route::resource('serie', SerieController::class)->middleware('auth');
+Route::get('/serie/imagen-upload/{id}', [SerieController::class, 'imagen'])->name('serie.imagen');
+
+Route::put('/serie/upload-imagen/{id}', [SerieController::class, 'upload'])->name('serie.upload');
+
+
+Route::get('/', [SerieController::class, 'inicio'])->name('serie.inicio');
 
 Auth::routes(['reset'=>false]);
 
-Route::get('/home', [SerieController::class, 'index'])->name('home');
+Route::get('/home', [SerieController::class, 'inicio'])->name('home');
 
-Route::group(['middleware' => 'auth'],function () {
-    Route::get('/', [SerieController::class, 'index'])->name('home');
-    Route::get('/', [CategoriaController::class, 'index'])->name('home');
-});
+Route::resource('/carrito', CarritoController::class)->middleware('auth');
+Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito');
+Route::put('/carrito/agregar/{array}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+
+// Route::get('/carrito', [CarritoController::class, 'store'])->name('carrito.store');
+ 
 
 //Categorias
 
