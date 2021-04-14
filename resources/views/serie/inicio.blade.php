@@ -13,16 +13,12 @@
         @endif
         
         <h1>Series</h1>
-        {{-- <div class="col-3">
-        <form class="d-flex float-rigth">
-            <input name="buscarpor" class="form-control me-3" type="search" placeholder="Buscar" aria-label="Buscar" value="{{ $buscarpor}}">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-          </form>
-        </div> --}}
-        <div class="form-group">
+        
+        {{-- <div class="form-group">
             <label for="Categoria">Categoria:</label>
-            <form class="d-flex float-rigth">
-            <select name="Categoria" id="Categoria" name= "buscarpor" value="{{$buscarpor}}" >
+            
+            <form action="{{ route('serie.buscar', ["nombre"=>$categorias->nombre]) }}" class="d-flex float-rigth" >
+            <select name="Categoria" id="Categoria">
                 @foreach($categorias->all() as $categoria)
                     <option  value="{{isset($categoria->id)}}">{{$categoria->nombre}}</option>
                 @endforeach
@@ -31,7 +27,7 @@
             <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
             
-        </div>
+        </div> --}}
         <div class="serie__grid">
             @foreach ($series as $serie)
 

@@ -14,22 +14,33 @@ class SerieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function inicio(Request $request){
+    public function inicio(){
         
-        $buscarpor=$request->get('buscarpor');
-        
-       // dd($buscarpor);
-
         $categorias=Categoria::paginate(15);
-
-        $series=Serie::where('categorias_id','like','%'.$buscarpor.'%')
-        ->paginate(15);
-
+        $series=Serie::paginate(15);
         return view('serie.inicio')
         ->with('series',$series)
-        ->with('categorias',$categorias)
-        ->with('buscarpor',$buscarpor);
+        ->with('categorias',$categorias);
     }
+    // public function buscar(Request $request,$nombre){
+        
+    //     dd($nombre);
+    //     $nombre =$request->categorias_id;
+        
+    //    //dd($buscarpor);
+
+    //     $categorias=Categoria::paginate(15);
+
+    //     $series=Serie::where('categorias_id','like','%'.$nombre.'%')
+    //     ->paginate(15);
+
+    //     return view('serie.buscar')
+    //     ->with('series',$series)
+    //     ->with('categorias',$categorias)
+    //     ->with('buscarpor',$nombre);
+    // }
+
+
 
     public function index()
     {
@@ -63,12 +74,14 @@ class SerieController extends Controller
     public function store(Request $request)
     {
         //
+
         // $validacion=[
         //     'Nombre'=>'required|string|max:100',
         //     'Categoria'=>'required|string|max: 100',
         // ];
         // $mensaje=[
-        //     'required'=>'El :attribute es requerido',  
+        //     'required'=>'El :attribute es requerido',
+            
         // ];
 
         $series = new Serie();

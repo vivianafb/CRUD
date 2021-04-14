@@ -42,6 +42,7 @@ Route::put('/serie/upload-imagen/{id}', [SerieController::class, 'upload'])->nam
 
 
 Route::get('/', [SerieController::class, 'inicio'])->name('serie.inicio');
+// Route::get('/serie/nombre/{nombre}', [SerieController::class, 'buscar'])->name('serie.buscar');
 
 Auth::routes(['reset'=>false]);
 

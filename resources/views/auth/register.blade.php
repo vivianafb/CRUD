@@ -27,10 +27,10 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row">
-                            <label for="perfil" class="col-md-4 col-form-label text-md-right">{{ __('Perfil') }}</label> --}}
+                        <div class="form-group row">
+                            <label for="perfil" class="col-md-4 col-form-label text-md-right">{{ __('Perfil') }}</label> 
 
-                            {{-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 
                                 <select class="form-select" id="Select"class="form-control @error('perfil') is-invalid @enderror" name="perfil" value="{{ old('perfil') }}" required autocomplete="name" autofocus>
                                     <option value="Seleccione">Seleccione</option>
@@ -42,8 +42,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div> --}}
-                        {{-- </div> --}}
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
