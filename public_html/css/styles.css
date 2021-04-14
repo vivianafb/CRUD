@@ -43,9 +43,9 @@ background-color: #FBFAFB;
 
 .serie__content
 .serie__grid{
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(14rem,2fr));
-        gap:1.875rem;
+    display: grid;
+    grid-template-columns:277px 277px 277px 277px;
+    grid-gap: 12px;
 }
 
 .serie__item{

@@ -7,6 +7,9 @@ use App\Models\Categoria;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\TextUI\XmlConfiguration\RemoveCacheTokensAttribute;
+use PHPUnit\TextUI\XmlConfiguration\RemoveEmptyFilter;
+
 class SerieController extends Controller
 {
     /**
@@ -167,9 +170,13 @@ class SerieController extends Controller
     public function destroy(Serie $serie)
     {
         //
+        $nombre_fichero = 'img/series/'.$serie->id.'.jpg';
+        unlink($nombre_fichero);
         $serie->delete();
         return redirect('serie'); 
     }
+
+
 
     public function imagen($id){
         return view('serie.upload')
