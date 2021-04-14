@@ -40,19 +40,28 @@
                     <!-- Left Side Of Navbar -->
                     
                     <ul class="navbar-nav mr-auto">
+                        @if(Auth::check())
+                        <p style="visibility: hidden">{{$perfil = \Auth::user()->perfil}}</p>
                         
+                        @if($perfil == 'Administrador')
                         <li class="nav-item"><a class="nav-link" href="{{ route('serie.index') }}">{{ __('Series') }}</a></li>
                         <li><a class="nav-link" href="{{ route('categoria.index') }}">{{ __('Categorias') }}</a></li>
-                        
-                            
+                        <li><a class="nav-link" href="{{ route('usuario.index') }}">{{ __('Usuarios') }}</a></li>
+                        @endif 
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        @if(Auth::check())
+                        <p style="visibility: hidden">{{$perfil = \Auth::user()->perfil}}</p>
+                        
+                        @if($perfil == 'Usuario')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('carrito') }}" >{{ __('Carrito') }}<span class="badge badge-light">0</span></a>
-                            
+                            <a class="nav-link" href="{{ route('carrito.index') }}" >{{ __('Carrito') }}<span class="badge badge-light">0</span></a>
+                            @endif 
                         </li>
+                        @endif
 
                         <!-- Authentication Links -->
                         @guest
