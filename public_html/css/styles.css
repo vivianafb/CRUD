@@ -122,6 +122,7 @@ a:hover.serie__item{
     
 
 .carrito_grid{
+    background-color: white;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(14rem,1fr));
     gap:25rem;
@@ -136,38 +137,30 @@ a:hover.serie__item{
 
 .carrito_imagen{
     float: left;
-    max-width: 100%;
+    width: 30%;
     height: 12.5rem;
+    margin-right: 20px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
     
 .carrito_informacion{
-    padding-left: 100px;
     color:#4A4956;
-    background-color: white;
+    
 }
 
 .carrito_nombre{
-    padding-left: 150px;
     margin-bottom: 0.8rem;
     font-size: 25px;
     font-weight: bold;
 }
 
 .carrito_precio{
-    padding-left: 150px;
     margin-bottom: 1rem;
     font-size: 15px;
     font-family: 'Nunito';
     font-weight: bold;
-}
-.carrito_botones{
-    padding-top: 70px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    float: right;
 }
     
 .carrito_total{
@@ -179,11 +172,14 @@ a:hover.serie__item{
     font-weight: bold;
 }
 #botonCarrito{
+    float: right;
     background-color:white;
     border-color: #8a2be2;
     font-size: 15px;
     font-weight: bold;
     border-radius:8ch;
     color: #8a2be2;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
   

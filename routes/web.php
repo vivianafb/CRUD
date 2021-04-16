@@ -48,6 +48,5 @@ Route::get('/', [SerieController::class, 'inicio'])->name('serie.inicio');
 Auth::routes(['reset'=>false]);
 
 Route::get('/home', [SerieController::class, 'inicio'])->name('home');
-Route::put('/carrito/agregar/{id}/{user}/{precio}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
 Route::resource('usuario', UserController::class);
 Route::put('carrito/{idUsuario}/{idSerie}', [CarritoController::class, 'store'])->name('carrito.store');

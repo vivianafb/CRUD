@@ -38,7 +38,7 @@
                         
                         
                         @if(Auth::check())
-                        <form action="{{ route('carrito.store', ["idUsuario"=>Auth::user(),"idSerie"=>$serie->id]) }}" method="post" enctype="multipart/form-data" >                                {{ method_field('PUT') }}
+                        <form action="{{ route('carrito.store', ["idUsuario"=>Auth::user()->id,"idSerie"=>$serie->id]) }}" method="post" enctype="multipart/form-data" >                                {{ method_field('PUT') }}
                             {{ csrf_field() }}                      
                                 <input class="btn Boton2 btn-block" type="submit" value="Agregar">
                             </form>

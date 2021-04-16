@@ -13,23 +13,29 @@
                 </div>
             @endif
             <h1>Carrito</h1>
+            @foreach($detalle_carrito as $detalle)
             <div class="carrito_grid">
                 <a href="" class="carrito_item" style="text-decoration: none">
-                    <div class="carrito_imagen">
-                        <img src="img/gambito.jfif" alt="">
-                    </div>
-                    <div class="carrito_informacion">
-                        <p class="carrito_nombre">Nombre</p>
+                        <div class="carrito_imagen"  style="background-image: url('{{ asset('img/series/' . $detalle->series->id . '.jpg') }}'); " ></div>
 
-                        <p class="carrito_precio">Precio</p>
-                    </div>
-                    <div class="carrito_botones">
+                    <div class="carrito_informacion">
+                        <p class="carrito_nombre">{{ $detalle->series->nombre}}</p>
+
+                        <p class="carrito_precio">Precio Unitario: {{ $detalle->series->precio}}</p>
+
+                        <p class="carrito_precio">Cantidad: {{ $detalle->cantidad}}</p>
+
+                        <p class="carrito_precio">Total: {{ $detalle->precio}}</p>
+
                         <button class="btn" id="botonCarrito">Eliminar del carrito</button>
                     </div>
                 </a>
             </div>
+            @endforeach
             <div>
-                <h3 class="carrito_total">Total: $20.000</h3>
+                @foreach($carrito as $car)
+                <h3 class="carrito_total">${{$car->total}}</h3>
+                @endforeach
             </div>
 
 
