@@ -54,12 +54,16 @@ class CarritoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(request $request, $idSerie,$idUsuario )
     {
-
-       
+        $usuario = Carrito::find($idUsuario);
+        dd($usuario);
+        $carrito = new Carrito();
+        $carrito->users_id=$idUsuario;
+        $carrito->total=0;
+        $carrito->save();
+        return back();
     }
-
     /**
      * Display the specified resource.
      *

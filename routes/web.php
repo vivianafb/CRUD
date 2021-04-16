@@ -42,13 +42,12 @@ Route::put('/serie/upload-imagen/{id}', [SerieController::class, 'upload'])->nam
 
 
 Route::get('/', [SerieController::class, 'inicio'])->name('serie.inicio');
+//Route::get('/', [SerieController::class, 'buscar'])->name('serie.buscar');
 // Route::get('/serie/nombre/{nombre}', [SerieController::class, 'buscar'])->name('serie.buscar');
 
 Auth::routes(['reset'=>false]);
 
 Route::get('/home', [SerieController::class, 'inicio'])->name('home');
-
-
 Route::put('/carrito/agregar/{id}/{user}/{precio}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
-
 Route::resource('usuario', UserController::class);
+Route::put('carrito/{idUsuario}/{idSerie}', [CarritoController::class, 'store'])->name('carrito.store');

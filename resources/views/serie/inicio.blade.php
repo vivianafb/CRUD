@@ -13,21 +13,17 @@
         @endif
         
         <h1>Series</h1>
-        
-        {{-- <div class="form-group">
-            <label for="Categoria">Categoria:</label>
-            
-            <form action="{{ route('serie.buscar', ["nombre"=>$categorias->nombre]) }}" class="d-flex float-rigth" >
-            <select name="Categoria" id="Categoria">
-                @foreach($categorias->all() as $categoria)
-                    <option  value="{{isset($categoria->id)}}">{{$categoria->nombre}}</option>
-                @endforeach
-                
-            </select>
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
-            
-        </div> --}}
+
+        <form >
+            <div class="form-row">
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="buscarpor" value="{{$buscarpor}}">
+                </div>
+                <div class="col-auto my-1">
+                    <input type="submit" class="btn Boton2" name="" value="Buscar">
+                </div>
+            </div>
+        </form>
         <div class="serie__grid">
             @foreach ($series as $serie)
 
@@ -42,8 +38,7 @@
                         
                         
                         @if(Auth::check())
-                            <form action="{{ route('carrito.agregar', ["id"=>$serie->id, "user"=>Auth::user()->id,"precio"=>$serie->precio]) }}" method="post" enctype="multipart/form-data" >   
-                                {{ method_field('PUT') }}
+                        <form action="{{ route('carrito.store', ["idUsuario"=>Auth::user(),"idSerie"=>$serie->id]) }}" method="post" enctype="multipart/form-data" >                                {{ method_field('PUT') }}
                             {{ csrf_field() }}                      
                                 <input class="btn Boton2 btn-block" type="submit" value="Agregar">
                             </form>

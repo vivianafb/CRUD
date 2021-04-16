@@ -16,7 +16,7 @@
             <div class="carrito_grid">
                 <a href="" class="carrito_item" style="text-decoration: none">
                     <div class="carrito_imagen">
-                        <img src="img/levi.jfif" alt="">
+                        <img src="img/gambito.jfif" alt="">
                     </div>
                     <div class="carrito_informacion">
                         <p class="carrito_nombre">Nombre</p>

@@ -6,9 +6,7 @@ use App\Models\Serie;
 use App\Models\Categoria;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use PHPUnit\TextUI\XmlConfiguration\RemoveCacheTokensAttribute;
-use PHPUnit\TextUI\XmlConfiguration\RemoveEmptyFilter;
+use Illuminate\Support\Facades\DB;
 
 class SerieController extends Controller
 {
@@ -17,20 +15,34 @@ class SerieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function inicio(){
-        
-        $categorias=Categoria::paginate(15);
-        $series=Serie::paginate(15);
-        return view('serie.inicio')
-        ->with('series',$series)
-        ->with('categorias',$categorias);
+    public function inicio(Request $request){
+            $buscarpor=$request->get('buscarpor');
+            if($buscarpor != null){
+            $categorias=Categoria::all();
+            //$categoria = Categoria::get('nombre','LIKE','%'.$buscarpor.'%');
+            $categoria= DB::select('select id from categorias where nombre = ? ', [$buscarpor]);
+            $id_categoria = json_encode($categoria[0]->id);
+            
+            $series=Serie::where('categorias_id',$id_categoria)->paginate(15);
+            return view('serie.inicio')
+            ->with('series',$series)
+            ->with('categorias',$categorias)
+            ->with('buscarpor',$buscarpor);
+            }else{
+                $categorias=Categoria::paginate(15);
+                $series=Serie::paginate(15);
+                return view('serie.inicio')
+                ->with('series',$series)
+                ->with('categorias',$categorias)
+                ->with('buscarpor',$buscarpor);;    
+            }
+       
+       
     }
-    // public function buscar(Request $request,$nombre){
+    
+     public function buscar(Request $request){
+  
         
-    //     dd($nombre);
-    //     $nombre =$request->categorias_id;
-        
-    //    //dd($buscarpor);
 
     //     $categorias=Categoria::paginate(15);
 
@@ -41,7 +53,7 @@ class SerieController extends Controller
     //     ->with('series',$series)
     //     ->with('categorias',$categorias)
     //     ->with('buscarpor',$nombre);
-    // }
+     }
 
 
 

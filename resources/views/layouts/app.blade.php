@@ -28,7 +28,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a id="TituloArriendo" class="navbar-brand" href="{{ url('/') }}" >
+                <a id="TituloArriendo" class="navbar-brand" href="{{ route('serie.inicio') }}" >
                     Arriendos Online
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                 </a>
