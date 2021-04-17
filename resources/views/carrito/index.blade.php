@@ -33,9 +33,9 @@
             </div>
             @endforeach
             <div>
-                @foreach($carrito as $car)
-                <h3 class="carrito_total">${{$car->total}}</h3>
-                @endforeach
+               
+                <h3 class="carrito_total">${{$total}}</h3>
+                
             </div>
 
 

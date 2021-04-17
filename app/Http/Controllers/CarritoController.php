@@ -18,13 +18,26 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        $serie = Serie::all();
-        $carrito=Carrito::paginate(15);
-        $detalle_carrito=Detalle_Carrito::paginate(15);
+        $usuario = auth()->user()->id;
+        $totalCarrito = DB::select('select total from carritos where users_id = ?', [$usuario]);
+        $total = json_encode($totalCarrito[0]->total);
+
+
+        $carrito=DB::select('select id from carritos where users_id = ?', [$usuario]);
+        $id_carrito =json_encode($carrito[0]->id);
+        //dd($id_carrito);
+        $cantidad=Detalle_Carrito::where('carritos_id',$id_carrito)->get()->count();
+
+        $detalle_carrito = Detalle_Carrito::where('carritos_id',$id_carrito)->get();
+        //dd($detalle_carrito);
+        $detallecar=DB::select('select * from detalle_carritos where carritos_id  = ?', [$id_carrito]);
+        $detalle = json_encode($detallecar[0]);
+
         return view('carrito.index')
-        ->with('carrito',$carrito)
         ->with('detalle_carrito',$detalle_carrito)
-        ->with('serie',$serie);
+        ->with('detalle',$detalle)
+        ->with('cantidad',$cantidad)
+        ->with('total',$total);
     }
 
 

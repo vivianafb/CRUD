@@ -58,7 +58,7 @@
                         
                         @if($perfil == 'Usuario')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('carrito.index') }}" >{{ __('Carrito') }}<span class="badge badge-light">{{$carrito}}</span></a>
+                            <a class="nav-link" href="{{ route('carrito.index') }}" >{{ __('Carrito') }}<span class="badge badge-light">{{$cantidad}}</span></a>
                             @endif 
                         </li>
                         @endif 

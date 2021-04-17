@@ -38,17 +38,19 @@
                         
                         
                         @if(Auth::check())
-                        <form action="{{ route('carrito.store', ["idUsuario"=>Auth::user()->id,"idSerie"=>$serie->id]) }}" method="post" enctype="multipart/form-data" >                                {{ method_field('PUT') }}
-                            {{ csrf_field() }}                      
+                        <p style="visibility: hidden">{{$perfil = \Auth::user()->perfil}}</p>
+                            @if($perfil == 'Usuario')
+                            <form action="{{ route('carrito.store', ["idUsuario"=>Auth::user()->id,"idSerie"=>$serie->id]) }}" method="post" enctype="multipart/form-data" >                                {{ method_field('PUT') }}
+                                {{ csrf_field() }}                      
+                                    <input class="btn Boton2 btn-block" type="submit" value="Agregar">
+                                </form>
+                            @else
+                                
+                            <form action="{{ route('login') }}" method="get" enctype="multipart/form-data" >   
+                                                
                                 <input class="btn Boton2 btn-block" type="submit" value="Agregar">
                             </form>
-                        @else
-                            
-                        <form action="{{ route('login') }}" method="get" enctype="multipart/form-data" >   
-                                              
-                            <input class="btn Boton2 btn-block" type="submit" value="Agregar">
-                        </form>
-                            
+                            @endif 
                         @endif
                         
                             

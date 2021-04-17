@@ -50,3 +50,4 @@ Auth::routes(['reset'=>false]);
 Route::get('/home', [SerieController::class, 'inicio'])->name('home');
 Route::resource('usuario', UserController::class);
 Route::put('carrito/{idUsuario}/{idSerie}', [CarritoController::class, 'store'])->name('carrito.store');
+//Route::get('carrito/{id}', [CarritoController::class, 'index'])->name('carrito.index');

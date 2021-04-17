@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Serie;
 use App\Models\Categoria;
 use App\Models\Detalle_Carrito;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class SerieController extends Controller
 {
@@ -18,30 +20,61 @@ class SerieController extends Controller
      */
     public function inicio(Request $request){
 
-            $carrito = Detalle_Carrito::all()->count();
-            $buscarpor=$request->get('buscarpor');
-            if($buscarpor != null){
-            $categorias=Categoria::all();
-            //$categoria = Categoria::get('nombre','LIKE','%'.$buscarpor.'%');
-            $categoria= DB::select('select id from categorias where nombre = ? ', [$buscarpor]);
-            $id_categoria = json_encode($categoria[0]->id);
+            if(auth()->check()){
+                $usuario = auth()->user()->id;
+                $carrito=DB::select('select id from carritos where users_id = ?', [$usuario]);
+                $id_carrito =json_encode($carrito[0]->id);
+                $cantidad=Detalle_Carrito::where('carritos_id',$id_carrito)->get()->count();
             
-            $series=Serie::where('categorias_id',$id_categoria)->paginate(15);
-            return view('serie.inicio')
-            ->with('series',$series)
-            ->with('categorias',$categorias)
-            ->with('buscarpor',$buscarpor)
-            ->with('carrito',$carrito);
-            }else{
-                $categorias=Categoria::paginate(15);
-                $series=Serie::paginate(15);
-                return view('serie.inicio')
-                ->with('series',$series)
-                ->with('categorias',$categorias)
-                ->with('buscarpor',$buscarpor)
-                ->with('carrito',$carrito);
 
+                $buscarpor=$request->get('buscarpor');
+                
+                if($buscarpor != null){
+                    $categorias=Categoria::all();
+                    //$categoria = Categoria::get('nombre','LIKE','%'.$buscarpor.'%');
+                    $categoria= DB::select('select id from categorias where nombre = ? ', [$buscarpor]);
+                    $id_categoria = json_encode($categoria[0]->id);
+                    
+                    $series=Serie::where('categorias_id',$id_categoria)->paginate(15);
+                    return view('serie.inicio')
+                    ->with('series',$series)
+                    ->with('categorias',$categorias)
+                    ->with('buscarpor',$buscarpor)
+                    ->with('cantidad',$cantidad);
+                }else{
+                    $categorias=Categoria::paginate(15);
+                    $series=Serie::paginate(15);
+                    return view('serie.inicio')
+                    ->with('series',$series)
+                    ->with('categorias',$categorias)
+                    ->with('buscarpor',$buscarpor)
+                    ->with('cantidad',$cantidad);
+                }
+            }else{
+                $buscarpor=$request->get('buscarpor');
+                if($buscarpor != null){
+                    $categorias=Categoria::all();
+                    $categoria= DB::select('select id from categorias where nombre = ? ', [$buscarpor]);
+                    $id_categoria = json_encode($categoria[0]->id);
+                    $cantidad = 0;
+                    $series=Serie::where('categorias_id',$id_categoria)->paginate(15);
+                    return view('serie.inicio')
+                    ->with('series',$series)
+                    ->with('categorias',$categorias)
+                    ->with('buscarpor',$buscarpor)
+                    ->with('cantidad',$cantidad);
+                }else{
+                    $cantidad = 0;
+                    $categorias=Categoria::paginate(15);
+                    $series=Serie::paginate(15);
+                    return view('serie.inicio')
+                    ->with('series',$series)
+                    ->with('categorias',$categorias)
+                    ->with('buscarpor',$buscarpor)
+                    ->with('cantidad',$cantidad);
+                }
             }
+                
        
        
     }
