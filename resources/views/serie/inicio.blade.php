@@ -17,10 +17,15 @@
         <form >
             <div class="form-row">
                 <div class="col-sm-2">
-                    <input type="text" class="form-control" name="buscarpor" value="{{$buscarpor}}">
+                    {{-- <input type="text" class="form-control" name="buscarpor" value="{{$buscarpor}}"> --}}
+                    <select class="form-control" name="Categoria">
+                        @foreach($categorias as $cat)
+                        <option value="{{$cat->id}}">{{$cat->nombre}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-auto my-1">
-                    <input type="submit" class="btn Boton2" name="" value="Buscar">
+                    <input type="submit" class="btn Boton2" name="" value="Buscar por Categoria">
                 </div>
             </div>
         </form>
@@ -28,7 +33,7 @@
             @foreach ($series as $serie)
 
                 <a href="" class="serie__item" style="text-decoration: none">
-                    <div class="serie__imagen"  style="background-image: url('{{ asset('img/series/' . $serie->id . '.jpg') }}'); " ></div>
+                    <div class="serie__imagen"  style="background-image: url('{{ asset('public_html/img/series/' . $serie->id . '.jpg') }}'); " ></div>
                         {{-- <img src="{{ asset('img/series/' . $serie->id . '.jpg') }}" id="imagenInicio"> --}}
                     
                     <div class="serie__informacion">

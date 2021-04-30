@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CsvController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -22,13 +24,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+//
 
-
-// Route::get('/serie', function () {
-//     return view('serie.index');
-// });
-
-// Route::get('/serie/create',[SerieController::class,'create']);
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('serie', SerieController::class);
@@ -42,12 +39,23 @@ Route::put('/serie/upload-imagen/{id}', [SerieController::class, 'upload'])->nam
 
 
 Route::get('/', [SerieController::class, 'inicio'])->name('serie.inicio');
-//Route::get('/', [SerieController::class, 'buscar'])->name('serie.buscar');
-// Route::get('/serie/nombre/{nombre}', [SerieController::class, 'buscar'])->name('serie.buscar');
 
 Auth::routes(['reset'=>false]);
 
 Route::get('/home', [SerieController::class, 'inicio'])->name('home');
-Route::resource('usuario', UserController::class);
+
+
+Route::get('usuario/perfil/{id}', [UserController::class, 'perfil'])->name('usuario.perfil');
+
 Route::put('carrito/{idUsuario}/{idSerie}', [CarritoController::class, 'store'])->name('carrito.store');
-//Route::get('carrito/{id}', [CarritoController::class, 'index'])->name('carrito.index');
+Route::delete('carrito/{idSerie}/{idCarrito}', [CarritoController::class, 'destroy'])->name('carrito.eliminar');
+
+
+
+Route::get('carrito.mensaje',[MailController::class , 'getMail'])->name('carrito.mensaje');
+
+Route::put('carrito', [CarritoController::class, 'index'])->name('carrito.index');
+
+Route::get('csv/series', [CsvController::class , 'descargarCsv'])->name('csv');
+
+

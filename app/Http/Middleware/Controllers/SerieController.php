@@ -49,7 +49,7 @@ class SerieController extends Controller
                 }
             
             }else{
-                $buscarpor=$request->get('Categoria');
+                $buscarpor=$request->get('buscarpor');
                 if($buscarpor != null){
                     
                     $id_categoria = Categoria::where('id', $buscarpor)->first()->id;

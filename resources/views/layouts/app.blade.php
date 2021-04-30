@@ -87,6 +87,9 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+
+                                <a class="nav-link" href="{{ route('usuario.perfil',["id" => auth()->user()->id]) }}" >{{ __('Editar Perfil') }}</a>
+
                             </div>
                         </li>
                         @endguest

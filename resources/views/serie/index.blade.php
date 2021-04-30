@@ -15,6 +15,8 @@
     
 
     <a href="{{ url('serie/create') }}" class="btn btn-success" id="Boton1"> Registrar Nueva Serie</a>
+    <a href="{{ url('csv/series') }}" class="btn btn-success" id="Boton1"> Exportar CVS</a>
+
         <br>
         <br>
         <table class="table table-light">
@@ -37,7 +39,7 @@
                         <figure>
                             @php
 
-                        $nombre_fichero = 'img/series/'.$serie->id.'.jpg';
+                        $nombre_fichero = 'public_html/img/series/'.$serie->id.'.jpg';
                         if (!(file_exists($nombre_fichero))) {
                             $nombre_fichero = "img/Delete-file-icon.png";
                         }

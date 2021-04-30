@@ -176,13 +176,8 @@ class CarritoController extends Controller
      */
     public function destroy($idSerie, $idCarrito)
     {
-        
         $existe = Detalle_Carrito::where('carritos_id',$idCarrito)->exists();
-
-
-
         if($existe){
-            
             $id_serie = Serie::find($idSerie);
             $precio = $id_serie->precio;
 
