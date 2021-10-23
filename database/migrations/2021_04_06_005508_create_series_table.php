@@ -16,11 +16,10 @@ class CreateSeriesTable extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('imagen');
+            $table->string('precio');
+            $table->unsignedBigInteger('categorias_id');
+            $table->foreign('categorias_id')->references('id')->on('categorias');
             $table->timestamps();
-            
-            $table->unsignedBigInteger('categoria');
-            $table->foreign('categoria')->references('id')->on('categorias');
         });
     }
 

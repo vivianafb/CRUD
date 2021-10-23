@@ -26,17 +26,22 @@ Route::get('/', function () {
 
 // Route::get('/serie/create',[SerieController::class,'create']);
 
-Route::resource('serie', SerieController::class)->middleware('auth');
 
+Route::resource('serie', SerieController::class)->middleware('auth');
+Route::get('/serie/imagen-upload/{id}', [SerieController::class, 'imagen'])->name('serie.imagen');
+
+Route::put('/serie/upload-imagen/{id}', [SerieController::class, 'upload'])->name('serie.upload');
+
+
+Route::get('/', [SerieController::class, 'home'])->name('serie.inicio');
 
 Auth::routes(['reset'=>false]);
 
 Route::get('/home', [SerieController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'],function () {
-    Route::get('/', [SerieController::class, 'index'])->name('home');
-    Route::get('/', [CategoriaController::class, 'index'])->name('home');
-});
+// Route::group(['middleware' => 'auth'],function () {
+//     Route::get('/', [SerieController::class, 'index'])->name('home');
+// });
 
 //Categorias
 

@@ -22,6 +22,15 @@
     value="{{ isset($serie->nombre)?$serie->nombre:old('nombre') }}" id="Nombre">
 
 </div>
+
+<div class="form-group">
+
+    <label for="Precio">Precio:</label>
+    <input class="form-control" type="text" name="Precio" 
+    value="{{ isset($serie->precio)?$serie->precio:old('precio') }}" id="Precio">
+
+</div>
+
 <div class="form-group">
     <label for="Categoria">Categoria:</label>
     <select class="form-control" name="Categoria" id="Categoria" >
@@ -30,9 +39,9 @@
         @endforeach
         
     </select>
-    
-
 </div>
+
+
 
 <div class="form-group">
     <label for="Imagen"></label>

@@ -12,7 +12,7 @@
         </div>
         @endif
 
-<a href="{{ url('categoria/create') }}" class="btn btn-success">Registrar Categoria</a>
+<a href="{{ url('categoria/create') }}" class="btn btn-success" id="Boton1">Registrar Categoria</a>
 <br><br>
 <table class="table table-light">
     <thead class="thead-light">
@@ -27,14 +27,14 @@
         @foreach( $categorias as $categoria)
         <tr>
             <td>{{  $categoria->id }}</td>
-            <td>{{  $categoria->Nombre }}</td>
+            <td>{{  $categoria->nombre }}</td>
             <td> 
-                <a href="{{ url('/categoria/'.$categoria->id.'/edit' )}}"class="btn btn-info" >Editar</a>
+                <a href="{{ url('/categoria/'.$categoria->id.'/edit' )}}"class="btn btn-info" id="Boton1">Editar</a>
 
                 <form action="{{  url('/categoria/'.$categoria->id) }}" method="post" class="d-inline">
                     @csrf
                     {{ method_field('DELETE') }}
-                    <input type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+                    <input type="submit" id="Boton2" class="btn btn-danger" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
                 </form> 
             </td>
         </tr>

@@ -1,0 +1,63 @@
+#TituloArriendo{
+    color: #8a2be2;
+    font-weight: bold;
+}
+
+#Boton1{
+    box-shadow: inset 0 0 0 2em var(--hover);
+    background-color:#8a2be2;
+    border-color: #611ca1;
+    font-size: 15px;
+    border-radius:8ch;
+    
+    color: aliceblue;
+}
+
+#Boton2{
+    border-radius:8ch;
+    background-color: #cc6bc7a2;
+    color: aliceblue;
+    border-color:#dec9f1;
+}
+
+#Select{
+    background: transparent;
+     border: none;
+     font-size: 14px;
+     height: 30px;
+     padding: 5px;
+     width: 250px;
+}
+
+#imagenInicio{
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+#TituloInicio{
+    font-weight: bold;
+    text-align: center;
+}
+
+#PrecioInicio{
+    font-weight: bold;
+    text-align: center;
+}
+
+#CategoriasInicio{
+    font-weight: bold;
+}
+
+#BotonArrendar{
+    box-shadow: inset 0 0 0 2em var(--hover);
+    background-color:#8a2be2;
+    border-color: #611ca1;
+    font-size: 15px;
+    border-radius:8ch;
+    float: none;
+    text-align: center;
+    color: aliceblue;
+}
+

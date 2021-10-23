@@ -10,9 +10,9 @@ class Serie extends Model
 {
     use HasFactory;
 
-	public function nombreCategoria()
+	public function categorias()
 	{
-		return $this->belongsTo(Categoria::class,'categoria');
+		return $this->belongsTo('App\Models\Categoria');
 	}
 }
 

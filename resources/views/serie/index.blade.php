@@ -14,15 +14,16 @@
     @endif
     
 
-    <a href="{{ url('serie/create') }}" class="btn btn-success"> Registrar Nueva Serie</a>
+    <a href="{{ url('serie/create') }}" class="btn btn-success" id="Boton1"> Registrar Nueva Serie</a>
         <br>
         <br>
         <table class="table table-light">
             <thead class="thead-light">
                 <tr>
-                    <th>#</th>
+                    <th>Id</th>
                     <th>Imagenes</th>
                     <th>Nombre</th>
+                    <th>Precio</th>
                     <th>Categoria</th>
                     <th>Acciones</th>
                 </tr>
@@ -33,21 +34,35 @@
                 <tr>
                     <td>{{ $serie->id }}</td>
                     <td>
-                        <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$serie->imagen }}" width="120" alt="">
+                        <figure>
+                            @php
+
+                        $nombre_fichero = 'img/series/'.$serie->id.'.jpg';
+                        if (!(file_exists($nombre_fichero))) {
+                            $nombre_fichero = "img/Delete-file-icon.png";
+                        }
+                        @endphp
+                        <img class="img-thumbnail img-fluid" src="{{ asset($nombre_fichero) }}" width="120" alt="">
+                        <p><a href="{{ route('serie.imagen',$serie->id) }}">Subir Imágen</a></p>
+                        </figure>
+                        
+                        
                     </td>
 
                     <td>{{ $serie->nombre }}</td>
+
+                    <td>{{ $serie->precio }}</td>
                     
-                    <td>{{ $serie->nombreCategoria->Nombre}}</td>
+                    <td>{{ $serie->categorias->nombre }}</td>
                     
                     
                     <td>
-                        <a href="{{ url('/serie/'.$serie->id.'/edit') }} " class="btn btn-info"> Editar</a>
+                        <a href="{{ route('serie.edit',$serie->id) }} " class="btn btn-info" id="Boton1"> Editar</a>
                         |
                         <form action="{{ url('/serie/'.$serie->id) }}" class="d-inline" method="post">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Desea eliminar?')" value="Borrar">
+                            <input class="btn btn-danger" type="submit" id="Boton2" onclick="return confirm('¿Desea eliminar?')" value="Borrar">
                         </form>
                     </td>
 
