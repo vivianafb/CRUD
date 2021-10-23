@@ -4,22 +4,6 @@
 }
 
 #Boton1{
-<<<<<<< HEAD
-    box-shadow: inset 0 0 0 2em var(--hover);
-    background-color:#8a2be2;
-    border-color: #611ca1;
-    font-size: 15px;
-    border-radius:8ch;
-    
-    color: aliceblue;
-}
-
-#Boton2{
-    border-radius:8ch;
-    background-color: #cc6bc7a2;
-    color: aliceblue;
-    border-color:#dec9f1;
-=======
     background-color:#8a2be2;
     border-color: #8a2be2;
     font-size: 15px;
@@ -40,7 +24,6 @@
     font-size: 15px;
     font-weight: bold;
     color: #8a2be2;
->>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
 }
 
 #Select{
@@ -52,40 +35,6 @@
      width: 250px;
 }
 
-<<<<<<< HEAD
-#imagenInicio{
-    width: 100%;
-    max-width: 400px;
-    height: 200px;
-    border-radius: 10px;
-}
-
-#TituloInicio{
-    font-weight: bold;
-    text-align: center;
-}
-
-#PrecioInicio{
-    font-weight: bold;
-    text-align: center;
-}
-
-#CategoriasInicio{
-    font-weight: bold;
-}
-
-#BotonArrendar{
-    box-shadow: inset 0 0 0 2em var(--hover);
-    background-color:#8a2be2;
-    border-color: #611ca1;
-    font-size: 15px;
-    border-radius:8ch;
-    float: none;
-    text-align: center;
-    color: aliceblue;
-}
-
-=======
 /* Inicio.blade.php Series */
 
 .series{
@@ -94,9 +43,9 @@ background-color: #FBFAFB;
 
 .serie__content
 .serie__grid{
-        display: grid;
-        grid-template-columns: repeat(auto-fill,minmax(14rem,2fr));
-        gap:1.875rem;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
 }
 
 .serie__item{
@@ -173,7 +122,6 @@ a:hover.serie__item{
     
 
 .carrito_grid{
-    background-color: white;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(14rem,1fr));
     gap:25rem;
@@ -188,30 +136,38 @@ a:hover.serie__item{
 
 .carrito_imagen{
     float: left;
-    width: 30%;
+    max-width: 100%;
     height: 12.5rem;
-    margin-right: 20px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
     
 .carrito_informacion{
+    padding-left: 100px;
     color:#4A4956;
-    
+    background-color: white;
 }
 
 .carrito_nombre{
+    padding-left: 150px;
     margin-bottom: 0.8rem;
     font-size: 25px;
     font-weight: bold;
 }
 
 .carrito_precio{
+    padding-left: 150px;
     margin-bottom: 1rem;
     font-size: 15px;
     font-family: 'Nunito';
     font-weight: bold;
+}
+.carrito_botones{
+    padding-top: 70px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    float: right;
 }
     
 .carrito_total{
@@ -223,15 +179,11 @@ a:hover.serie__item{
     font-weight: bold;
 }
 #botonCarrito{
-    float: right;
     background-color:white;
     border-color: #8a2be2;
     font-size: 15px;
     font-weight: bold;
     border-radius:8ch;
     color: #8a2be2;
-    margin-bottom: 10px;
-    margin-right: 10px;
 }
   
->>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011

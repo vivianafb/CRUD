@@ -526,6 +526,10 @@ class ComposerStaticInit8a82c8ea0a1d858d1cdbbdfb6776e698
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+<<<<<<< HEAD
+=======
+        'App\\Http\\Controllers\\CarritoController' => __DIR__ . '/../..' . '/app/Http/Controllers/CarritoController.php',
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
         'App\\Http\\Controllers\\CategoriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriaController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -539,6 +543,7 @@ class ComposerStaticInit8a82c8ea0a1d858d1cdbbdfb6776e698
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Carrito' => __DIR__ . '/../..' . '/app/Models/Carrito.php',
         'App\\Models\\Categoria' => __DIR__ . '/../..' . '/app/Models/Categoria.php',
         'App\\Models\\Serie' => __DIR__ . '/../..' . '/app/Models/Serie.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

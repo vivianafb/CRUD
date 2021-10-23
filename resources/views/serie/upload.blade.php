@@ -13,6 +13,10 @@
 								<label for="exampleFormControlFile1">Buscar archivo</label>
 								<input name="image" id="image" type="file" class="file">
 							</div>
+<<<<<<< HEAD
+=======
+							
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
 							<input type="submit" name="Enviar" class="btn btn-danger" id="Boton1" value="Subir">
 						</div>
 

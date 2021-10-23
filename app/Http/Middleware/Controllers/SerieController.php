@@ -18,14 +18,6 @@ class SerieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-    public function home(Serie $serie){
-        
-        $series=Serie::all();
-        return view('serie.inicio',['series' => $series]);
-    }
-
-=======
     public function inicio(Request $request){
         $categorias = Categoria::all();
         
@@ -57,7 +49,7 @@ class SerieController extends Controller
                 }
             
             }else{
-                $buscarpor=$request->get('Categoria');
+                $buscarpor=$request->get('buscarpor');
                 if($buscarpor != null){
                     
                     $id_categoria = Categoria::where('id', $buscarpor)->first()->id;
@@ -103,7 +95,6 @@ class SerieController extends Controller
             
     }
     
->>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
     public function index()
     {
        
@@ -229,14 +220,6 @@ class SerieController extends Controller
     public function destroy(Serie $serie)
     {
         //
-<<<<<<< HEAD
-        $serie->delete();
-        return redirect('serie');
-
-    
-        
-    }
-=======
         $nombre_fichero = 'img/series/'.$serie->id.'.jpg';
         unlink($nombre_fichero);
         $serie->delete();
@@ -244,7 +227,6 @@ class SerieController extends Controller
     }
 
 
->>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
 
     public function imagen($id){
         return view('serie.upload')
@@ -262,11 +244,7 @@ class SerieController extends Controller
         ]);
 
         $imageName = $id.'.jpg';
-<<<<<<< HEAD
-        $request->image->move(('img/series'), $imageName);
-=======
         $request->image->move(('public_html/img/series'), $imageName);
->>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
         return redirect('serie')->with('Imagen cargada');
     }
 }

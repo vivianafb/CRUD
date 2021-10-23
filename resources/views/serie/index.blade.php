@@ -15,6 +15,11 @@
     
 
     <a href="{{ url('serie/create') }}" class="btn btn-success" id="Boton1"> Registrar Nueva Serie</a>
+<<<<<<< HEAD
+=======
+    <a href="{{ url('csv/series') }}" class="btn btn-success" id="Boton1"> Exportar CVS</a>
+
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
         <br>
         <br>
         <table class="table table-light">
@@ -37,13 +42,21 @@
                         <figure>
                             @php
 
+<<<<<<< HEAD
                         $nombre_fichero = 'img/series/'.$serie->id.'.jpg';
+=======
+                        $nombre_fichero = 'public_html/img/series/'.$serie->id.'.jpg';
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
                         if (!(file_exists($nombre_fichero))) {
                             $nombre_fichero = "img/Delete-file-icon.png";
                         }
                         @endphp
                         <img class="img-thumbnail img-fluid" src="{{ asset($nombre_fichero) }}" width="120" alt="">
                         <p><a href="{{ route('serie.imagen',$serie->id) }}">Subir Imágen</a></p>
+<<<<<<< HEAD
+=======
+                    
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
                         </figure>
                         
                         

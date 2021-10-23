@@ -37,8 +37,8 @@
         @foreach($categorias->all() as $categoria)
             <option value="{{isset($categoria->id)?$categoria->id:old('id') }}">{{$categoria->Nombre}}</option>
         @endforeach
-        
     </select>
+<<<<<<< HEAD
 </div>
 
 
@@ -50,7 +50,8 @@
     @endif
     <input class="form-control" type="file" name="Imagen" value="" id="Imagen">
 
+=======
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
 </div>
-
 <input class="btn btn-success" type="submit" value="Guardar">
 <a class="btn btn-primary" href="{{ url('serie/') }}"> Atrás</a>

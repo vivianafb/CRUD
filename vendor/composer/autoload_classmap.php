@@ -14,6 +14,10 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
+<<<<<<< HEAD
+=======
+    'App\\Http\\Controllers\\CarritoController' => $baseDir . '/app/Http/Controllers/CarritoController.php',
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
     'App\\Http\\Controllers\\CategoriaController' => $baseDir . '/app/Http/Controllers/CategoriaController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
@@ -27,6 +31,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Models\\Carrito' => $baseDir . '/app/Models/Carrito.php',
     'App\\Models\\Categoria' => $baseDir . '/app/Models/Categoria.php',
     'App\\Models\\Serie' => $baseDir . '/app/Models/Serie.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

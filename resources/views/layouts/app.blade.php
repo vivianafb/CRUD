@@ -28,7 +28,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+<<<<<<< HEAD
                 <a id="TituloArriendo" class="navbar-brand" href="{{ url('/') }}" >
+=======
+                <a id="TituloArriendo" class="navbar-brand" href="{{ route('serie.inicio') }}" >
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
                     Arriendos Online
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                 </a>
@@ -38,21 +42,35 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('serie.index') }}">{{ __('Series') }}</a>
-                            
-                        </li>
-                        <li>
-                            <a class="nav-link" href="{{ route('categoria.index') }}">{{ __('Categorias') }}</a>
-                        </li>
+                        @if(Auth::check())
+                        <p style="visibility: hidden">{{$perfil = \Auth::user()->perfil}}</p>
+                        
+                        @if($perfil == 'Administrador')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('serie.index') }}">{{ __('Series') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('categoria.index') }}">{{ __('Categorias') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('usuario.index') }}">{{ __('Usuarios') }}</a></li>
+                        @endif 
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        @if(Auth::check())
+                        <p style="visibility: hidden">{{$perfil = \Auth::user()->perfil}}</p>
+                        
+                        @if($perfil == 'Usuario')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('carrito.index') }}" >{{ __('Carrito') }}<span class="badge badge-light">{{$cantidad}}</span></a>
+                            @endif 
+                        </li>
+                        @endif 
+
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
+<<<<<<< HEAD
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                         </li>
@@ -62,6 +80,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Registrate') }}</a>
                         </li>
+=======
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a></li>
+                        @endif
+
+                        @if (Route::has('register'))
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Registrate') }}</a></li>
+>>>>>>> 2679cc3ee61687907b8427a0c4cee385aa674011
                         @endif
                         @else
                         <li class="nav-item dropdown">
@@ -72,12 +97,15 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Salir') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+
+                                <a class="nav-link" href="{{ route('usuario.perfil',["id" => auth()->user()->id]) }}" >{{ __('Editar Perfil') }}</a>
+
                             </div>
                         </li>
                         @endguest
